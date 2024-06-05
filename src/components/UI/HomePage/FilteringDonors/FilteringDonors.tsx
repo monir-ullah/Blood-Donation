@@ -87,12 +87,17 @@ const FilteringDonors: React.FC = () => {
             },
           }}
         >
-          <FormControl sx={{ width: {
-              xs: "100%",
-              sm: "100%",
-              md: "100%",
-              lg: "30%",
-            }, marginBottom: 2 }}>
+          <FormControl
+            sx={{
+              width: {
+                xs: "100%",
+                sm: "100%",
+                md: "100%",
+                lg: "30%",
+              },
+              marginBottom: 2,
+            }}
+          >
             <InputLabel>Blood Type</InputLabel>
             <Select
               value={bloodType}
@@ -108,6 +113,7 @@ const FilteringDonors: React.FC = () => {
               <MenuItem value={"AB_NEGATIVE"}>AB-</MenuItem>
               <MenuItem value={"O_POSITIVE"}>O+</MenuItem>
               <MenuItem value={"O_NEGATIVE"}>O-</MenuItem>
+              <MenuItem value="">Reset</MenuItem>
             </Select>
           </FormControl>
           <TextField
@@ -122,7 +128,8 @@ const FilteringDonors: React.FC = () => {
                 sm: "100%",
                 md: "100%",
                 lg: "30%",
-              }, marginBottom: 2
+              },
+              marginBottom: 2,
             }}
           />
           <TextField
@@ -137,7 +144,8 @@ const FilteringDonors: React.FC = () => {
                 sm: "100%",
                 md: "100%",
                 lg: "30%",
-              }, marginBottom: 5
+              },
+              marginBottom: 5,
             }}
           />
         </Box>

@@ -6,6 +6,7 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  Divider,
   Stack,
   Typography,
 } from "@mui/material";
@@ -16,7 +17,7 @@ const DonorCard = ({ donor }: any) => {
   const avatar = "https://i.ibb.co/Xy3r8MX/avatar.png";
 
   return (
-    <Card sx={{ maxWidth: 345, maxHeight: 580 }}>
+    <Card sx={{ maxWidth: 345, maxHeight: 580, borderRadius: "8px" }}>
       <CardMedia
         component="img"
         alt="Donor Image"
@@ -24,7 +25,7 @@ const DonorCard = ({ donor }: any) => {
         image={donor?.profilePicture ? donor.profilePicture : avatar}
         style={{ objectFit: "cover", height: 300 }}
       />
-      <CardContent>
+      <CardContent sx={{ padding: "30px" }}>
         <Typography gutterBottom variant="h5" component="p">
           Name: {donor?.name}
         </Typography>
@@ -40,12 +41,21 @@ const DonorCard = ({ donor }: any) => {
         <Typography gutterBottom component="p">
           Availability: {donor?.status}
         </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small" component={Link} href={`/donors/${donor.id}`}>
+
+        <Divider />
+        <Button
+          size="medium"
+          sx={{
+            marginTop: "15px",
+            display: "flex",
+            backgroundColor: "secondary.main",
+          }}
+          component={Link}
+          href={`/donors/${donor.id}`}
+        >
           Details
         </Button>
-      </CardActions>
+      </CardContent>
     </Card>
   );
 };

@@ -1,7 +1,7 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import Image from "next/image";
-import blood1 from "@/assets/images/blood1.jpg";
-import bloodgift from "@/assets/images/blood-gift.jpg";
+import blood1 from "@/assets/images/blood2.jpg";
+import bloodGift from "@/assets/images/blood-donate.jpg";
 import Link from "next/link";
 
 const HeroSection = () => {
@@ -15,7 +15,10 @@ const HeroSection = () => {
         "&::after": {
           content: '""',
           position: "absolute",
+          transform: "scaleX(-1)",
           top: 0,
+          right: 0,
+          bottom: 0,
           left: 0,
           width: "100%",
           height: "100%",
@@ -31,6 +34,7 @@ const HeroSection = () => {
           flexDirection: { xs: "column", md: "row" },
           alignItems: "center",
           py: 16,
+          gap: 10,
         }}
       >
         <Box
@@ -41,63 +45,43 @@ const HeroSection = () => {
             zIndex: 1,
           }}
         >
-          <Box sx={{
-            textAlign: "center",
-            margin: "20px auto",
-            fontSize: {
-              xs: "24px",
-              sm: "24px",
-              md: "32px",
-              lg: "40px",
-            },
-          }}>
-          <Typography
-            variant="h2"
-            component="h1"
-            fontWeight={700}
-            color="white"
-            sx={{ mb: 2, fontSize: {
-              xs: "24px",
-              sm: "24px",
-              md: "32px",
-              lg: "40px",
-            }, }}
+          <Box
+            sx={{
+              textAlign: "left",
+              margin: "20px auto",
+              fontSize: {
+                xs: "24px",
+                sm: "24px",
+                md: "32px",
+                lg: "40px",
+              },
+            }}
           >
-            Donate Blood,
-          </Typography>
-          <Typography
-            variant="h2"
-            component="h1"
-            fontWeight={700}
-            color="tomato"
-            sx={{ mb: 2, fontSize: {
-              xs: "24px",
-              sm: "24px",
-              md: "32px",
-              lg: "40px",
-            }, }}
-          >
-            Save Lives.
-          </Typography>
-          <Typography
-            variant="h2"
-            component="h1"
-            fontWeight={700}
-            color="primary.main"
-            sx={{ mb: 4, fontSize: {
-              xs: "24px",
-              sm: "24px",
-              md: "32px",
-              lg: "40px",
-            }, }}
-          >
-            Be a Hero Today
-          </Typography>
+            <Typography
+              variant="h2"
+              component="h1"
+              fontWeight={700}
+              color="white"
+              sx={{
+                mb: 2,
+                fontSize: {
+                  xs: "24px",
+                  sm: "24px",
+                  md: "32px",
+                  lg: "40px",
+                },
+              }}
+            >
+              Your blood can give someone another chance at life.
+            </Typography>
           </Box>
           <Typography variant="body1" color="white" sx={{ mb: 4 }}>
-            Every donation helps save up to three lives. Your contribution is
-            vital and can make a significant difference in someone’s life. Join
-            us in this noble cause and become a hero by donating blood.
+            Donating blood is a powerful act of kindness that saves lives. Each
+            pint you give can save up to three people, offering them a second
+            chance to live and thrive. Your donation is a lifeline for those in
+            need, turning despair into hope. Be a hero and give the gift of
+            life. Your generosity can bring joy and new beginnings to countless
+            families. Donate blood today and make a lasting impact.
           </Typography>
           <Box
             sx={{
@@ -154,19 +138,19 @@ const HeroSection = () => {
         >
           <Box
             sx={{
-              width: { xs: 300, sm: 400, md: 500 },
-              height: { xs: 300, sm: 400, md: 500 },
-              borderRadius: "50%",
+              // width: { xs: 300, sm: 400, md: 500 },
+              // height: { xs: 300, sm: 400, md: 500 },
+              borderRadius: "5%",
               overflow: "hidden",
               boxShadow: 6,
             }}
           >
             <Image
-              src={bloodgift}
+              src={bloodGift}
               layout="responsive"
               alt="blood donation hero"
               width={500}
-              height={500}
+              height={800}
             />
           </Box>
         </Box>

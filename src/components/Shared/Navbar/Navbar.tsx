@@ -1,117 +1,3 @@
-// "use client";
-
-// import useUserInfo from "@/hooks/useUserInfo";
-// import { logoutUser } from "@/services/actions/logoutUser";
-// import { Box, Button, Container, Stack, Typography } from "@mui/material";
-// import Image from "next/image";
-// import Link from "next/link";
-// import { useRouter } from "next/navigation";
-// import bloodLogo from "@/assets/images/blood-logo.png";
-// import BloodtypeIcon from "@mui/icons-material/Bloodtype";
-
-// const Navbar = () => {
-//   const userInfo = useUserInfo();
-//   // console.log("User info from navbar = ", userInfo);
-//   const router = useRouter();
-
-//   const handleLogOut = () => {
-//     logoutUser(router);
-//   };
-
-//   return (
-//     <Box
-//       sx={{
-//         bgcolor: "primary.main",
-//       }}
-//     >
-//       <Container>
-//         <Stack
-//           py={2}
-//           direction="row"
-//           justifyContent="space-between"
-//           alignItems="center"
-//         >
-//           <Stack direction="row" alignItems="center" gap={1}>
-//             <Box
-//               sx={{
-//                 borderRadius: "50%",
-//                 overflow: "hidden",
-//                 width: 80,
-//                 height: 80,
-//               }}
-//             >
-//               <Link href="/">
-//                 <Image
-//                   src={bloodLogo}
-//                   alt="Logo"
-//                   width={80}
-//                   height={80}
-//                   style={{ objectFit: "cover" }}
-//                 />
-//               </Link>
-//             </Box>
-//             <Typography variant="h4" component={Link} href="/" fontWeight={600}>
-//               Bl
-//               <Box component="span" color="red">
-//                 <BloodtypeIcon fontSize="large" sx={{ color: "red" }} />
-//                 <BloodtypeIcon fontSize="large" sx={{ color: "red" }} />
-//               </Box>
-//               d Dona
-//               <Box component="span" color="tomato">
-//                 tion
-//               </Box>{" "}
-//               App
-//             </Typography>
-//           </Stack>
-
-//           <Stack direction="row" justifyContent="space-between" gap={4}>
-//             <Typography component={Link} href="/" color="#ffffff">
-//               Home
-//             </Typography>
-
-//             <Typography component={Link} href="/donors" color="#ffffff">
-//               Donors
-//             </Typography>
-
-//             <Typography component={Link} href="/about" color="#ffffff">
-//               About Us
-//             </Typography>
-
-//             {userInfo?.userId ? (
-//               <Typography component={Link} href="/dashboard" color="#ffffff">
-//                 Dashboard
-//               </Typography>
-//             ) : null}
-//           </Stack>
-
-//           {userInfo?.userId ? (
-//             <Stack sx={{ flexDirection: "row", gap: 2 }}>
-//               <Button component={Link} href="/dashboard/profile">
-//                 My Profile
-//               </Button>
-//               <Button
-//                 color="error"
-//                 onClick={handleLogOut}
-//                 sx={{ boxShadow: 0 }}
-//               >
-//                 Logout
-//               </Button>
-//             </Stack>
-//           ) : (
-//             <Button component={Link} href="/login">
-//               Login
-//             </Button>
-//           )}
-//         </Stack>
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// export default Navbar;
-
-///////////////////////////////////////////////////////
-
 "use client";
 
 import useUserInfo from "@/hooks/useUserInfo";
@@ -134,9 +20,17 @@ import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import bloodLogo from "@/assets/images/blood-logo.png";
+import bloodLogo from "@/assets/images/blood-donation-logo.png";
 import BloodtypeIcon from "@mui/icons-material/Bloodtype";
 import { useState } from "react";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-poppins",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 const Navbar = () => {
   const userInfo = useUserInfo();
@@ -155,7 +49,9 @@ const Navbar = () => {
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Box sx={{ my: 2 }}>
         <Link href="/">
-          <Image src={bloodLogo} alt="Logo" width={80} height={80} />
+          <Box className="logo-image">
+            <Image src={bloodLogo} alt="Logo" width={300} height={200} />
+          </Box>
         </Link>
       </Box>
       <Divider />
@@ -194,7 +90,13 @@ const Navbar = () => {
 
   return (
     <Box
-      sx={{ bgcolor: "primary.main", position: "sticky", top: 0, zIndex: 999 }}
+      sx={{
+        bgcolor: "primary.light",
+        position: "sticky",
+        top: 0,
+        zIndex: 999,
+        boxShadow: "-4px 4px 7px #0000009c",
+      }}
     >
       <Container>
         <Stack
@@ -213,10 +115,8 @@ const Navbar = () => {
           >
             <Box
               sx={{
-                borderRadius: "50%",
                 overflow: "hidden",
-                width: 80,
-                height: 80,
+
                 display: { xs: "none", sm: "block" },
               }}
             >
@@ -224,46 +124,11 @@ const Navbar = () => {
                 <Image
                   src={bloodLogo}
                   alt="Logo"
-                  width={80}
-                  height={80}
+                  width={250}
+                  height={150}
                   style={{ objectFit: "cover" }}
                 />
               </Link>
-            </Box>
-            <Box>
-              <Typography
-                variant="h4"
-                component={Link}
-                href="/"
-                fontWeight={600}
-                sx={{
-                  fontSize: {
-                    xs: "20px",
-                    sm: "20px",
-                    md: "24px",
-                    lg: "32px",
-                  },
-                }}
-              >
-                Bl
-                <Box
-                  component="span"
-                  color="red"
-                  sx={{ display: "inline-flex" }}
-                >
-                  <BloodtypeIcon sx={{ color: "red", fontSize: "inherit" }} />
-                  <BloodtypeIcon sx={{ color: "red", fontSize: "inherit" }} />
-                </Box>
-                d Donati
-                <Box
-                  component="span"
-                  color="red"
-                  sx={{ display: "inline-flex" }}
-                >
-                  <BloodtypeIcon sx={{ color: "red", fontSize: "inherit" }} />
-                </Box>
-                n App
-              </Typography>
             </Box>
           </Box>
 
@@ -278,17 +143,36 @@ const Navbar = () => {
               },
             }}
           >
-            <Typography component={Link} href="/" color="#ffffff">
+            <Typography
+              component={Link}
+              href="/"
+              color="primary.main"
+              className="poppins-semibold nav-link-hover"
+            >
               Home
             </Typography>
-            <Typography component={Link} href="/donors" color="#ffffff">
+            <Typography
+              component={Link}
+              href="/donors"
+              color="primary.main"
+              className="poppins-semibold nav-link-hover"
+            >
               Donors
             </Typography>
-            <Typography component={Link} href="/about" color="#ffffff">
+            <Typography
+              component={Link}
+              href="/about"
+              color="primary.main"
+              className="poppins-semibold nav-link-hover"
+            >
               About Us
             </Typography>
             {userInfo?.userId && (
-              <Typography component={Link} href="/dashboard" color="#ffffff">
+              <Typography
+                component={Link}
+                href="/dashboard"
+                color="primary.main"
+              >
                 Dashboard
               </Typography>
             )}
